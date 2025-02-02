@@ -1,0 +1,846 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+div.gallery {
+  margin-left: -2.5rem;
+}
+
+img.review-image {
+  border-radius: 250px;
+}
+
+div.review-card {
+  display: flex;
+  /* margin-left: 20rem; */
+  margin-top: 5rem;
+}
+
+ul.liste {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  /* background: radial-gradient(93.21% 322.59% at 1.42% 4.44%, #00c4cc 0, #009733 52.5%, #62fa0a 100%) center 0 no-repeat;
+    background-image: radial-gradient(93.21% 322.59% at 1.42% 4.44%, rgb(39, 255, 233) 0px, rgb(5, 150, 20) 52.5%, rgb(106, 254, 175) 100%);
+    background-position-x: center;
+    background-position-y: 0px;
+    background-size: initial;
+    background-repeat: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    z-index: 0;
+     */
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: 6rem;
+}
+
+figcaption {
+  text-align: center;
+}
+
+/* En-tête du tableau */
+th {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+/* Cellules de données */
+td {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Alternance des couleurs des lignes */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Effet au survol des lignes */
+tr:hover {
+  background-color: #e0f3ff;
+  cursor: pointer;
+}
+
+/* Bordures entre lignes */
+th,
+td {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Bordure de la dernière ligne */
+tr:last-child td {
+  border-bottom: none;
+}
+
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 40vh;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-top: 20vh;
+}
+
+h1.home {
+  color: rgb(18, 18, 19);
+}
+
+h1,
+h2 {
+  color: #0b0c0e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+p.foodName {
+  font-size: 25px;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+img.img-food1 {
+  width: 50rem;
+  margin-left: -1.5rem;
+}
+
+img {
+  width: 25rem;
+  border-radius: 5px;
+  border: solid rgb(49, 252, 255);
+  margin-left: 5rem;
+}
+
+img.img1Blog {
+  width: 46.5rem;
+  margin-left: 0rem;
+}
+
+img.img-home {
+  width: 20rem;
+}
+
+p.text {
+  text-align: center;
+  width: 70%;
+  margin-left: 14rem;
+  margin-top: 25rem;
+  color: black;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+li.food-details {
+  /* padding: 15px 20px; */
+  margin-bottom: 10px;
+  background-color: rgb(253, 255, 241);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  justify-content: space-around;
+  /* align-items: center; */
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 80rem;
+  margin-left: 5rem;
+
+  font-size: 25px;
+  font-family: "Arial", sans-serif;
+}
+
+ul.ul {
+  margin-left: 1rem;
+}
+
+p.price {
+  font-family: "Arial", sans-serif;
+}
+
+p.description {
+  text-align: center;
+  width: 60rem;
+  margin-left: 10rem;
+  font-size: 25px;
+  font-family: "Arial", sans-serif;
+}
+
+div.form {
+  border: solid;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #da95ff;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+form input[type="text"] {
+  width: calc(30% - 22px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid grey;
+  border-radius: 5px;
+  margin-left: 0rem;
+  background-color: white;
+}
+
+form button {
+  background-color: #77d5e4;
+  margin-top: 10px;
+  margin-left: 0rem;
+}
+
+header.navbar {
+  box-shadow: 10px 15px 15px #5e7fc0;
+  margin-left: -25px;
+}
+
+header {
+  color: rgb(0, 76, 217);
+  padding: 20px;
+  text-align: center;
+  border-top: solid 20px;
+  box-shadow: #0b0c0e;
+  /* background: radial-gradient(
+      93.21% 322.59% at 1.42% 4.44%,
+      #00c4cc 0,
+      #5a32fa 52.5%,
+      #7d2ae8 100%
+    ) */
+  /* center 0 no-repeat; */
+  background-image: radial-gradient(
+    93.21% 322.59% at 1.42% 4.44%,
+    rgb(255, 255, 255) 0px,
+    rgb(0, 76, 217) 52.5%,
+    rgb(255, 0, 0) 100%
+  );
+  background-position-x: center;
+  background-position-y: 0px;
+  background-size: initial;
+  background-repeat: no-repeat;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+  z-index: 0;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+header nav ul li {
+  list-style-type: none;
+}
+
+header nav ul li a {
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
+}
+
+header nav ul li a:hover {
+  color: #082489;
+  text-decoration: none;
+}
+
+p.error {
+  margin-left: 1rem;
+  color: red;
+}
+
+form div.name1 {
+  margin-left: 30rem;
+  width: 70rem;
+  display: flex;
+}
+
+/* Articles */
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+article {
+  background-color: #fff;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+article h2 {
+  color: #333;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Style de base pour le carrousel des avis */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  max-width: 800px; /* Limite la largeur du carrousel */
+  margin: 0 auto; /* Centrer le carrousel */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff; /* Couleur de fond */
+}
+
+.carousel-slides {
+  display: flex; /* Aligne les cartes en ligne */
+  transition: transform 0.5s ease; /* Transition douce pour le changement de slide */
+}
+
+.review-card {
+  min-width: 100%; /* Chaque carte occupe 100% de la largeur du carrousel */
+  display: flex; /* Affiche l'image et le texte en ligne */
+  align-items: center; /* Centre verticalement les éléments */
+  /* padding: 20px; Espacement interne */
+  position: relative; /* Pour le positionnement des éléments internes */
+  margin-left: 0rem;
+}
+
+.review-image {
+  width: 100px; /* Largeur de l'image */
+  height: 100px; /* Hauteur de l'image */
+  border-radius: 50%; /* Rendre l'image ronde */
+  margin-right: 20px; /* Espace entre l'image et le texte */
+  object-fit: cover; /* S'assure que l'image s'adapte à l'espace donné */
+  transition: transform 0.5s ease, filter 0.5s ease; /* Transition douce pour les effets */
+}
+
+.review-content {
+  flex: 1; /* Prend tout l'espace restant */
+}
+
+/* Effet de zoom et flou */
+.review-card:hover .review-image {
+  transform: scale(1.1); /* Zoom sur l'image au survol */
+  filter: blur(2px); /* Flou de l'image au survol */
+}
+
+.review-text {
+  font-style: italic; /* Italique pour le texte de l'avis */
+}
+
+/* Styles pour les indicateurs de carrousel */
+.carousel-indicators {
+  display: flex; /* Aligne les indicateurs horizontalement */
+  justify-content: center; /* Centre les indicateurs */
+  margin-top: 100px; /* Espacement au-dessus des indicateurs */
+}
+
+.indicator {
+  width: 10px; /* Largeur de chaque indicateur */
+  height: 10px; /* Hauteur de chaque indicateur */
+  border-radius: 50%; /* Forme ronde */
+  background-color: #ccc; /* Couleur de fond des indicateurs */
+  border: none; /* Pas de bordure */
+  margin: 0 5px; /* Espacement entre les indicateurs */
+  cursor: pointer; /* Curseur de pointeur pour indiquer que c'est cliquable */
+  transition: background-color 0.1s ease;
+  margin-right: 0rem; /* Transition pour le changement de couleur */
+}
+
+.indicator.active {
+  background-color: #007bff; /* Couleur active pour l'indicateur sélectionné */
+}
+
+.indicator:hover {
+  background-color: #0056b3; /* Couleur au survol */
+}
+
+/* Image cliquable */
+.img-food {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.img-food:hover {
+  opacity: 0.7;
+}
+
+/* Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Black with opacity */
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  transition: 0.3s ease-in-out; /* Smooth transition for modal appearance */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Caption of Modal Image (Image Text) */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.success-message {
+  text-align: center;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.contact-info {
+  margin-top: 20px;
+}
+
+.contact-info h3 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.contact-info p {
+  margin: 0;
+  font-size: 16px;
+}
+
+footer {
+  background-color: rgb(0, 76, 217);
+  color: #ffffff;
+  text-align: center;
+  padding: 3px;
+  /* position: fixed; */
+  bottom: -4rem;
+  width: 100%;
+  /* opacity: 0.6; */
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* @media (max-width: 414px) {
+  body {
+  font-family: "Arial", sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1,
+h2 {
+  color: #0b0c0e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+li {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  background-color: #be77e4;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 30rem;
+  margin-left: 30rem;
+}
+
+li:hover {
+  background-color: #77d5e4;
+}
+
+li span {
+  font-weight: bold;
+}
+
+div.form {
+  border: solid;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #3195f9;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+form input[type="text"] {
+  width: calc(30% - 22px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid grey;
+  border-radius: 5px;
+  margin-left: 2rem;
+  background-color: white;
+}
+
+form button {
+  background-color: #77d5e4;
+  margin-top: 10px;
+  margin-left: 42rem;
+}
+
+header {
+  background-color: #77d5e4;
+  color: #ecf0f1;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+header nav ul li {
+  list-style-type: none;
+}
+
+header nav ul li a {
+  color: #ecf0f1;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
+}
+
+header nav ul li a:hover {
+  color: #082489;
+  text-decoration: none;
+}
+
+p.error {
+  margin-left: 10rem;
+  color: red;
+}
+
+form div.name1 {
+  margin-left: 32rem;
+}
+
+
+
+
+/* Version téléphone */
+/* @media screen and (max-width: 480px) {
+  body {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .container {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  li {
+    width: 100%;
+    margin-left: 0;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  form input[type="text"] {
+    width: calc(100% - 20px);
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  form button {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+ 
+
+  p.error {
+    margin-left: 0;
+    font-size: 14px;
+  }
+
+  form div.name1 {
+    margin-left: 0;
+  }
+}
+
+
+form.text-field-with-button{
+      margin-left: 4rem;
+} */
+
+/* 
+header {
+        margin-bottom: 20px;
+        margin-left: -2rem;
+        margin-top: -2rem;
+        margin-right: -6rem;
+} */
+
+/* ul.liste{
+  margin-left: 4rem;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(3, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+} */
+
+/* li.n-list1{
+      width: 7rem;
+      height: 3rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+}
+
+li.n-list2{
+      width: 7rem;
+    margin-left: 10.5rem;
+    margin-top: -6.3rem;
+}
+
+li.n-list3{
+      width: 7rem;
+    margin-left:20rem;
+    margin-top: -6.2rem;
+}
+
+ul.ul{
+  margin-left: 4rem;
+} */
+
+/* h1,
+h2 {
+  margin-left: 5rem;
+}
+
+h1.checkpoint{
+  margin-left: 0.5rem;
+} */
