@@ -1,106 +1,101 @@
-"use client";
-import { useState, useContext } from "react";
-import { useMutation } from "@apollo/client";
-import { ADD_FOOD, GET_FOODS } from "../graphql/queries";
-import { useRouter } from "next/navigation";
-
+import { gql, useMutation } from "@apollo/client";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { GET_FOODS } from "@/graphql/queries";
+import { CREATE_FOOD } from "@/graphql/mutations";
+// 
+// 
 const AddFood = () => {
-  const [name, setName] = useState("");
-  const [code, setCode] = useState("");
-  const [emoji, setEmoji] = useState("");
-  const [continent, setContinent] = useState("");
-  const [errors, setErrors] = useState<any>({});
-  const router = useRouter();
-
-  const [addFood] = useMutation(ADD_FOOD, {
+// 
+  const [file, setFile] = useState<File>();
+  const [imageURL, setImageURL] = useState<string>();
+  const [createNewFood] = useMutation(CREATE_FOOD, {
+    onCompleted(data) {
+      console.log("mutation completed data", data);
+    },
+    onError(error) {
+      console.log("error after executing mutation", error);
+    },
     refetchQueries: [{ query: GET_FOODS }],
-    onCompleted: () => {
-      router.push("/foods");
-    },
-    onError: (error) => {
-      console.error("Error adding food:", error);
-    },
   });
-
-  const validateForm = () => {
-    const newErrors: any = {};
-    if (!name) newErrors.name = "Name is required";
-    if (!code) newErrors.code = "Code is required";
-    if (!emoji) newErrors.emoji = "Emoji is required";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    try {
-      await addFood({
-        variables: {
-          name,
-          code,
-          emoji,
-          continent,
-        },
-      });
-    } catch (error) {
-      console.error("An error was occured", error);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="text-field-with-button">
-      <div className="name1">
-        Name:
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-            setErrors({ ...errors, name: "" });
-          }}
-          placeholder="Name"
-        />
-        {errors.name && <p className="error"> {errors.name}</p>}
-      </div>
-      <div className="name1">
-        Code:
-        <input
-          type="text"
-          value={code}
-          onChange={(e) => {
-            setCode(e.target.value);
-            setErrors({ ...errors, code: "" });
-          }}
-          placeholder="Code"
-        />
-        {errors.code && <p className="error">{errors.code}</p>}
-      </div>
-      <div className="name1">
-        Emoji:
-        <input
-          type="text"
-          value={emoji}
-          onChange={(e) => {
-            setEmoji(e.target.value);
-            setErrors({ ...errors, emoji: "" });
-          }}
-          placeholder="Emoji"
-        />
-        {errors.emoji && <p className="error">{errors.emoji}</p>}
-      </div>
-      <div>
-        {errors.continent && <p className="error">{errors.continent}</p>}
-      </div>
-
-      <button type="submit">Ajouter un plat</button>
-    </form>
-  );
-};
-
+  let tagsArray: number[] = [];
+// 
+// 
+    return (
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+// 
+          const form = e.target as HTMLFormElement;
+          const formData = new FormData(form);
+// 
+          const formJson: any = Object.fromEntries(formData.entries());
+          formJson.price = parseInt(formJson.price);
+          formJson.tags = tagsArray;
+          formJson.imgUrl = imageURL;
+          console.log("formjson", formJson);
+          const result = await createNewFood({
+            variables: {
+              data: formJson,
+            },
+          });
+          console.log("result", result);
+        }}
+      >
+        <div>
+          <input
+            type="file"
+            onChange={(e) => {
+              if (e.target.files) {
+                setFile(e.target.files[0]);
+              }
+            }}
+          />
+          <button
+            onClick={async (event) => {
+              event.preventDefault();
+              if (file) {
+                const url = "/img";
+                const formData = new FormData();
+                formData.append("file", file, file.name);
+                try {
+                  const response = await axios.post(url, formData);
+                  setImageURL(response.data.filename);
+                } catch (err) {
+                  console.log("error", err);
+                }
+              } else {
+                alert("select a file to upload");
+              }
+            }}
+          >
+            Upload Image
+          </button>
+          {imageURL ? (
+            <>
+              <br />
+              <img width={"500"} alt="uploadedImg" src={imageURL} />
+              <br />
+            </>
+          ) : null}
+          <button
+            onClick={() => {
+              console.log("post this to backend: " + imageURL);
+            }}
+          >
+            Add new image
+          </button>
+        </div>
+        <label>
+          Titre de l&apos;annonce: <br />
+          <input className="text-field" name="title" />
+        </label>
+        <br />
+    //  
+        <button className="button">Submit</button>
+      </form>
+    );
+  }
+;
 export default AddFood;

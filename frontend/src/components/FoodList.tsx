@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GET_FOODS } from "../graphql/queries";
 import { useState } from "react";
+import AddFood from "./AddFood";
 
 function FoodList() {
   const { loading, error, data } = useQuery(GET_FOODS);
@@ -9,8 +10,8 @@ function FoodList() {
   const [captionText, setCaptionText] = useState("");
 
   const openModal = (imgUrl: string, name: string) => {
-    setSelectedImage(imgUrl); // Assure-toi que c'est imgUrl et non pas img
-    setCaptionText(name); // Le texte du nom du plat devient la légende
+    setSelectedImage(imgUrl); 
+    setCaptionText(name);
     setModalOpen(true);
   };
 
@@ -26,6 +27,7 @@ function FoodList() {
   return (
     <div className="list">
       <h2>Vos plats</h2>
+      
       <ul className="liste">
         {data.foods.map((food: any) => (
           <li className="liste1" key={food.id}>
@@ -35,7 +37,6 @@ function FoodList() {
                 className="img-food"
                 src={food.imgUrl} 
                 alt={food.name}
-                onClick={() => openModal(food.imgUrl, food.name)} // Ouvre le modal avec l'image
               />
             </div>
           </li>

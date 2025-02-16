@@ -1,14 +1,18 @@
-
-
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import { ADD_CONTACT } from "../graphql/mutations";
 
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
+    lastname: "",
     email: "",
     message: "",
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const [addContact, { loading, error }] = useMutation(ADD_CONTACT);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -20,71 +24,92 @@ function Contact() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+
+    try {
+      await addContact({ variables: formData });
+      setSuccessMessage("Votre message a été envoyé avec succès !");
+      setFormData({ name: "", lastname: "", email: "", message: "" }); // Réinitialiser le formulaire
+    } catch (err) {
+      console.error("Erreur lors de l'envoi du formulaire :", err);
+    }
   };
 
   return (
     <div className="contact">
       <h2>Contactez-nous</h2>
 
-      {formSubmitted ? (
-        <p className="success-message">
-          Merci pour votre message, nous vous répondrons bientôt !
+      <form className="contact" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Nom :</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="lastname">Prénom :</label>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            value={formData.lastname}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">Email :</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="message">Message :</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Envoi en cours..." : "Envoyer"}
+        </button>
+
+        {successMessage && <p className="success-message">{successMessage}</p>}
+      </form>
+
+      {error && (
+        <p className="error-message">
+          Une erreur est survenue, veuillez réessayer.
         </p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Nom :</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email">Email :</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="message">Message :</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-
-          <button type="submit">Envoyer</button>
-        </form>
       )}
 
-      <div className="contact-info">
-        <h3>Adresse</h3>
-        <p>123 Rue de la Gastronomie, Paris, France</p>
-        <h3>Téléphone</h3>
-        <p>+33 1 23 45 67 89</p>
-        <h3>Email</h3>
-        <p>contact@restaurant.com</p>
+      <div className="image-container1">
+        <img src="https://adelemanga-portfolio.netlify.app/static/media/girlme.0acab6167e7db055cb7a.png" 
+        alt="Original Image" 
+        className="clone-1"/>
       </div>
     </div>
   );
 }
 
 export default Contact;
+
+        

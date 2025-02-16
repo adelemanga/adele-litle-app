@@ -1,17 +1,18 @@
 import { ApolloProvider } from "@apollo/client";
 import client from "../graphql/client";
 import Header from "@/components/Header";
-import Advice from "@/components/Advice";
+import FoodList from "@/components/FoodList";
 import Footer from "@/components/Footer";
-import AdviceList from "@/components/AdviceList";
+import SearchFood from "@/components/SearchFood";
 
-export default function AdvicePage() {
+export default function AddFoodPage() {
   return (
     <ApolloProvider client={client}>
       <div>
         <Header />
-        <Advice />
-        <AdviceList/>
+        <h1>Recherche ton plat</h1>
+        <SearchFood />
+        <FoodList />
         <Footer />
       </div>
     </ApolloProvider>

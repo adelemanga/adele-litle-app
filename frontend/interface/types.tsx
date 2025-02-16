@@ -8,3 +8,16 @@ export type Food = {
   continent: string;
 };
 
+export type Advice = {
+  id: string;
+  name: string;
+  lastname: string;
+  message: string;
+  rating: number;
+  title: string;
+};
+
+export interface NewFoodFormValues {
+  name: string;
+  imgUrl: string;
+}

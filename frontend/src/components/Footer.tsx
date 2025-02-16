@@ -4,9 +4,9 @@ function Footer() {
   return (
     <div>
       <footer>
-        <p>Author: Hege Refsnes</p>
+        <p>Author: Adèle Manga</p>
         <p>
-          <a href="mailto:hege@example.com">hege@example.com</a>
+          <a href="adelemanga@gmail.com">adelemanga@gmail.com</a>
         </p>
       </footer>
     </div>

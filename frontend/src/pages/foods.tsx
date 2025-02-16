@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
 import client from "../graphql/client";
 import FoodList from "@/components/FoodList";
-import AddFood from "@/components/AddFood";
+import AddFood from "@/components/SearchFood";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 

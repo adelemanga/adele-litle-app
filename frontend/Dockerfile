@@ -1,4 +1,4 @@
-FROM node:20.9.0-alpine3.17
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -11,8 +11,5 @@ COPY public ./public
 COPY tsconfig.json ./tsconfig.json
 COPY next-env.d.ts ./next-env.d.ts
 COPY *.config.js ./
-
-ARG NEXT_PUBLIC_GRAPHQL_API_URL
-ENV NEXT_PUBLIC_GRAPHQL_API_URL ${NEXT_PUBLIC_GRAPHQL_API_URL}
 
 CMD npm run dev

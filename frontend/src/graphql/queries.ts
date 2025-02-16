@@ -77,20 +77,27 @@ export const GET_FOOD_BY_ID = gql`
 //   }
 // `;
 
-export const WHO_AM_I = gql`
-  query WhoAmI {
-    whoAmI {
-      email
-      firstname
+export const GET_ALL_CONTACTS = gql`
+  query GetAllContacts {
+    getAllContacts {
+      id
+      name
       lastname
-      hashedPassword
-      role
+      email
+      message
     }
   }
 `;
 
-export const LOGOUT = gql`
-  query Logout {
-    logout
+export const GET_ALL_ADVICES = gql`
+  query GetAllAdvices {
+    getAllAvis {
+      id
+      name
+      lastname
+      message
+      rating
+      title
+    }
   }
 `;

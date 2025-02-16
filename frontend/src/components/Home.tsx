@@ -1,4 +1,4 @@
-// pages/index.js
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,7 +7,7 @@ export default function HomePage() {
     <div className="video-container">
       <iframe
         className="background-video"
-        src="https://www.youtube.com/embed/L1GYRZ2FXv8?autoplay=1&mute=1&loop=1&playlist=L1GYRZ2FXv8"
+        src="https://www.youtube.com/embed/tdtVyIZfH2Q?si=gDS7uvxJrHRpvdEp&autoplay=1&mute=1"
         allow="autoplay; encrypted-media"
         allowFullScreen
       ></iframe>
@@ -37,7 +37,7 @@ export default function HomePage() {
       <table className="presentation">
         <td>
           <img
-            className="img-home"
+            className="img-home1"
             src="https://img.cuisineaz.com/700x560/2024/03/06/i197655-tous-des-chefs.webp"
             alt="image"
           />
@@ -46,20 +46,29 @@ export default function HomePage() {
         <td>
           {" "}
           <img
-            className="img-home"
-            src="https://www.premium-communication.fr/cache/f/b/6/4/4/fb6445e4cf888c189e1ee2245865017cf7337551.jpeg"
+            className="img-home2"
+            src="http://foodandsens.com/wp-content/uploads/2022/09/Capture-decran-2022-09-04-a-10.48.15.png"
             alt="image"
           />
-          <figcaption className="figcaption">Phillipe Etchebest</figcaption>
+          <figcaption className="figcaption">Mory Sacko</figcaption>
         </td>
         <td>
           {" "}
           <img
-            className="img-home"
+            className="img-home3"
             src="https://cdn.eat-list.fr/blog/article/top-10-des-chefs-francais-les-plus-influents_6415.jpg"
             alt="image"
           />
           <figcaption>Cyril Lignac</figcaption>
+        </td>
+        <td>
+          {" "}
+          <img
+            className="img-home2"
+            src="http://foodandsens.com/wp-content/uploads/2022/09/Capture-decran-2022-09-04-a-10.48.15.png"
+            alt="image"
+          />
+          <figcaption className="figcaption">Mory Sacko</figcaption>
         </td>
       </table>
     </div>

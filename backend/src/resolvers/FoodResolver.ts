@@ -40,11 +40,18 @@ class FoodResolver {
 
   @Mutation(() => Food)
   async createNewFood(@Arg("data") newFoodData: NewFoodInput) {
-    const resultFromSave = await Food.save({
-      ...newFoodData,
-    });
+    const newFood = new Food();
+    newFood.name = newFoodData.name;
+    newFood.description = newFoodData.description;
+    newFood.emoji = newFoodData.emoji;
+    newFood.continent = newFoodData.continent;
+    newFood.price = newFoodData.price;
+    newFood.imgUrl =
+      newFoodData.imgUrl ??
+      "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"; // Valeur par défaut
 
-    return resultFromSave;
+    await newFood.save();
+    return newFood;
   }
 
   @Query(() => Food)
@@ -57,7 +64,7 @@ class FoodResolver {
   }
 
   @Query(() => [Food])
-  async searchFoods(@Arg("keyword") keyword: string) {
+  async searchFoods(@Arg("keyword") keyword: string): Promise<Food[]> {
     const foods = await Food.find({
       where: [{ name: Like(`%${keyword}%`) }],
     });

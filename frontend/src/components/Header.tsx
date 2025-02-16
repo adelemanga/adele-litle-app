@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 
 export default function Header() {
@@ -12,7 +13,7 @@ export default function Header() {
             <Link href="/foods">Nos Plats</Link>
           </li>
           <li className="nav2">
-            <Link href="/add-food">Ajoute un plat</Link>
+            <Link href="/search">Rechercher un plat</Link>
           </li>
           <li className="nav3">
             <Link href="/food-details">Détails de vos plats</Link>

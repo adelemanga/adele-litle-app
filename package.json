@@ -10,10 +10,22 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.9",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.474.0",
     "next": "^15.1.6",
+    "pg": "^8.13.3",
+    "postcss": "^8.5.1",
+    "postgres": "^3.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "type-graphql": "^2.0.0-rc.2",
+    "set-cookie-parser": "^2.7.1",
+    "tailwindcss": "^4.0.3",
+    "type-graphql": "^2.0.0-rc.2"
+  },
+  "devDependencies": {
     "typescript": "^5.7.3"
   }
 }
